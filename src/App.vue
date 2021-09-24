@@ -1,6 +1,11 @@
 <template>
   <p>{{ greeting }}</p>
-  <input v-if="isVisible" type="text" v-model="greeting" />
+  <input
+    @keyup.enter="printText(greeting)"
+    v-if="isVisible"
+    type="text"
+    v-model="greeting"
+  />
   <button @click="toggleInput">Toggle Input</button>
 </template>
 
@@ -19,6 +24,9 @@ export default {
   methods: {
     toggleInput() {
       this.isVisible = !this.isVisible
+    },
+    printText(greeting) {
+      console.log(greeting)
     }
   }
 }
