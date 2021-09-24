@@ -1,6 +1,7 @@
 <template>
   <p>{{ greeting }}</p>
-  <input type="text" v-model="greeting" />
+  <input v-if="isVisible" type="text" v-model="greeting" />
+  <button @click="toggleInput">Toggle Input</button>
 </template>
 
 <script>
@@ -11,7 +12,13 @@ export default {
   },
   data: () => {
     return {
-      greeting: 'Hello World!'
+      greeting: 'Hello World!',
+      isVisible: false
+    }
+  },
+  methods: {
+    toggleInput() {
+      this.isVisible = !this.isVisible
     }
   }
 }
